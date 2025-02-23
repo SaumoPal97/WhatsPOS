@@ -1,0 +1,4 @@
+.flaskenv
+database.db
+env/
+**/__pycache__/
