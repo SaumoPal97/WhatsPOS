@@ -39,14 +39,14 @@ def send_text_message(message, phone):
     print(response.text)
 
 
-def send_media_message(link, caption, phone):
+def send_media_message(id, caption, phone):
     url = "https://graph.facebook.com/v21.0/589214864273665/messages"
     payload = json.dumps({
         "messaging_product": "whatsapp",
         "to": phone,
         "type": "image",
-        "text": {
-            "link": link,
+        "image": {
+            "id": id,
             "caption": caption if caption is not None else ""
         }
     })
@@ -58,9 +58,9 @@ def send_media_message(link, caption, phone):
     print(response.text)
 
 
-def upload_media_message(filename, filepath, phone):
+def upload_media_message(filename):
     url = "https://graph.facebook.com/v21.0/589214864273665/media"
-    file_path = os.path.join(os.getcwd(), "logo.png")
+    file_path = os.path.join(os.getcwd(), filename)
     
     with open(file_path, "rb") as file:
         files = {"file": ("logo.png", file, "image/png")}
